@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Lista de tarefas</title>
+</head>
+<body>
+    <h1>Lista de tarefas</h1>
+    <form class="form-list" action="#" method="POST">
+        <div class="form-group">
+            <label for="task">Nome</label>
+            <input type="text" name="task" id="task" required>
+        </div>
+        <div class="form-group">
+            <label for="category">Categoria</label>
+            <input type="text" name="category" id="category" required>
+        </div>
+        <div class="form-group">
+            <label>Prioridade</label>
+            <label for="task">Baixa</label>
+            <input type="radio" name="priority" id="easy" required>
+            <label for="task">Média</label>
+            <input type="radio" name="priority" id="medium" required>
+            <label for="task">Alta</label>
+            <input type="radio" name="priority" id="high" required>
+        </div>
+    </form>
+</body>
+</html>
