@@ -11,40 +11,61 @@
 
 <body>
     <h1>Cadastro de tarefas</h1>
-    <form class="form-list" method="POST">
-        <div class="form-group">
-            <label for="task">Nome</label><br>
-            <input type="text" name="task" id="task" required>
+    <div class="main-content">
+        <!-- Div do formulário -->
+        <div class="content">
+            <h2>Formulário</h2>
+            <form id="task-form" class="form-list">
+
+                <!-- Nome da tarefa -->
+                <div class="form-group">
+                    <label for="name">Nome</label><br>
+                    <input type="text" name="name" id="name" pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras são permitidas" required>
+                </div>
+
+                <!-- Categoria da tarefa -->
+                <div class="form-group">
+                    <label for="category">Categoria</label><br>
+                    <input type="text" name="category" id="category" pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras são permitidas" required>
+                </div>
+
+                <!-- Prioridade -->
+                <div class="form-group">
+                    <label>Prioridade</label><br>
+                    <div class="radio-group">
+                        <span>
+                            <input type="radio" name="priority" id="low" value="Baixa" required>
+                            <label for="low">Baixa</label>
+                        </span>
+                        <span>
+                            <input type="radio" name="priority" id="medium" value="Média" required>
+                            <label for="medium">Média</label>
+                        </span>
+                        <span>
+                            <input type="radio" name="priority" id="high" value="Alta" required>
+                            <label for="high">Alta</label>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Data limite -->
+                <div class="form-group">
+                    <label for="date">Data limite</label><br>
+                    <input type="date" name="date" id="date" required>
+                </div>
+                <button type="submit" class="task-button">Adicionar tarefa</button>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="category">Categoria</label><br>
-            <input type="text" name="category" id="category" required>
-        </div>
-        <div class="form-group">
-            <label>Prioridade</label><br>
-            <div class="radio-group">
-                <span>
-                    <input type="radio" name="priority" id="easy" required>
-                    <label for="task">Baixa</label>
-                </span>
-                <span>
-                    <input type="radio" name="priority" id="medium" required>
-                    <label for="task">Média</label>
-                </span>
-                <span>
-                    <input type="radio" name="priority" id="hard" required>
-                    <label for="task">Alta</label>
-                </span>
+
+        <!-- Div da lista de tarefas -->
+        <div class="content">
+            <h2>Tarefas cadastradas</h2>
+            <div class="div-tasks">
+                <ul id="task-list">
+                </ul>
             </div>
         </div>
-        <div class="form-group">
-            <label for="date">Data limite</label><br>
-            <input type="date" name="date" id="date" required>
-        </div>
-        <button onclick="addTarefa()" class="task-button">Adicionar tarefa</button>
-    </form>
-
-    <h2>Tarefas cadastradas</h2>
+    </div>
 </body>
 
 </html>
