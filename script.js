@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Cria o elemento da tarefa e o adiciona na lista
         const taskElement = createTaskElement(name, category, priority, dueDate);
-        taskList.appendChild(taskElement);
+        taskList.appendChild(taskElement);      
 
         // Limpa o formulário após adicionar a tarefa
         taskForm.reset();
@@ -84,4 +84,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         return card;
     }
+
 });
+
+// Função para alternar entre modos claro e escuro
+function toggleDarkMode() {
+    let element = document.body;
+    element.classList.toggle("dark-mode");
+
+    // Alterna o ícone do botão
+    const button = document.querySelector('.switch-button i');
+    if (element.classList.contains("dark-mode")) {
+        button.classList.remove("fa-sun-o");
+        button.classList.add("fa-moon-o");
+    } else {
+        button.classList.remove("fa-moon-o");
+        button.classList.add("fa-sun-o");
+    }
+}

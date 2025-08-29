@@ -17,10 +17,9 @@ body {
 }
 
 .main-content {
-    width: 90%;
+    width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10%;
 }
 
 .content {
@@ -93,7 +92,7 @@ input[type="radio"] {
 }
 
 h1 {
-    margin-bottom: 0;
+    margin: 0;
 }
 
 /* Estilização do formulário */
@@ -148,6 +147,7 @@ label {
 
 #task-list {
     width: 100%;
+    list-style: none;
     padding: 0;
     margin: 0;
 }
@@ -226,4 +226,56 @@ label {
 
 .delete-btn:hover {
     background-color: #a93226;
+}
+
+/* Estilização para dark mode */
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode .form-list {
+    background-color: #444;
+    border: 1px solid #555;
+}
+
+body.dark-mode .form-list button {
+    color: #333;
+    background-color: #fff;
+}
+
+body.dark-mode .form-list button:hover {
+    background-color: #ddd;
+}
+
+body.dark-mode .task-card {
+    background-color: #444;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    color: #fff;
+}
+
+body.dark-mode .task-info p {
+    color: #fff;
+}
+
+/* Botão de dark mode */
+.switch-button {
+    font-size: 30px;
+    border: none;
+    background-color: #f4f4f9;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+body.dark-mode .switch-button {
+    color: #f4f4f9;
+    background-color: #333;
+}
+
+.top-bar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
