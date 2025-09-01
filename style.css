@@ -33,7 +33,8 @@ body {
     margin: 0;
 }
 
-input {
+input,
+select {
     width: auto;
     padding: 12px;
     border: 1px solid #ccc;
@@ -106,6 +107,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
 }
 
 .form-group {
@@ -140,6 +142,29 @@ label {
     background-color: #555;
 }
 
+/* Barra de Filtros */
+.filter-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: fit-content;
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.filter-bar .form-group {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body.dark-mode .filter-bar {
+    background-color: #444;
+}
+
 /* Tarefas e cards */
 .div-tasks {
     width: auto;
@@ -154,11 +179,12 @@ label {
 
 .task-card {
     background: #fff;
-    border-left: 5px solid #ccc; /* Borda padrão */
+    border-left: 5px solid #ccc;
+    /* Borda padrão */
     margin-bottom: 15px;
     padding: 15px 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -250,11 +276,11 @@ body.dark-mode .form-list button:hover {
 
 body.dark-mode .task-card {
     background-color: #444;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     color: #fff;
 }
 
-body.dark-mode .task-info p {
+body.dark-mode .task-card p {
     color: #fff;
 }
 
@@ -278,4 +304,62 @@ body.dark-mode .switch-button {
     justify-content: flex-end;
     padding: 0 20px;
     box-sizing: border-box;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .main-content {
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    .form-list {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-bar .form-group {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .task-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-actions {
+        width: 100%;
+        margin-top: 15px;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .task-actions button {
+        margin-left: 10px;
+        margin-bottom: 0;
+    }
+
+    .complete-btn {
+        margin-bottom: 0;
+    }
+
+    .top-bar {
+        padding: 0 10px;
+    }
 }

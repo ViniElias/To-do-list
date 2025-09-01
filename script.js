@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskCategoryInput = document.getElementById('category');
     const taskDateInput = document.getElementById('date');
     const taskList = document.getElementById('task-list');
+    const filterCategory = document.getElementById('filter-category');
+    const sortBy = document.getElementById('sort-by');
 
     // Função de adicionar nova tarefa
     taskForm.addEventListener('submit', (event) => {
@@ -26,11 +28,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Cria o elemento da tarefa e o adiciona na lista
         const taskElement = createTaskElement(name, category, priority, dueDate);
-        taskList.appendChild(taskElement);      
+        taskList.appendChild(taskElement);
 
         // Limpa o formulário após adicionar a tarefa
         taskForm.reset();
     });
+
+    // Event listeners para filtros e ordenação
+    filterCategory.addEventListener('change', updateTasks);
+    sortBy.addEventListener('change', updateTasks);
+
+    function updateTasks() {
+        const category = filterCategory.value;
+        const sort = sortBy.value;
+
+        let tasks = Array.from(taskList.children);
+
+        // Filtro
+        tasks.forEach(task => {
+            if (category === 'all' || task.dataset.category === category) {
+                task.style.display = 'flex';
+            } else {
+                task.style.display = 'none';
+            }
+        });
+
+        // Ordenação
+        if (sort === 'priority') {
+            tasks.sort((a, b) => {
+                const priorityOrder = { 'Alta': 1, 'Média': 2, 'Baixa': 3 };
+                return priorityOrder[a.dataset.priority] - priorityOrder[b.dataset.priority];
+            });
+        } else if (sort === 'due-date') {
+            tasks.sort((a, b) => new Date(a.dataset.dueDate) - new Date(b.dataset.dueDate));
+        }
+
+        // Re-anexa as tarefas ordenadas
+        tasks.forEach(task => taskList.appendChild(task));
+    }
 
     // Função para criar o card da tarefa
     function createTaskElement(name, category, priority, dueDate) {
